@@ -20,6 +20,13 @@ public class LobbyControllerScript : MonoBehaviour
         ReadyAnimal.gameObject.SetActive(false);
     }
 
+    /** This region controls the logic behind the lobby wich makes players confirm that they are ready in order to play.
+     * We can find 4 methods in this region: ReadyAnimalBtn, ReadyFrutaBtn, StartGame and Resetlobby.
+     * ReadyMethods are called when the players push their coresponding ready button.
+     * StartGame makes visible the button start game when all the players are ready to play.
+     * ResetLobby is called when the lobby is exit so when coming back all the players are not ready and have to confirm that they are.
+     */
+    #region Lobby logic
     public void ReadyAnimalBtn() 
     {
         isAnimalReady = !isAnimalReady;
@@ -39,7 +46,7 @@ public class LobbyControllerScript : MonoBehaviour
         StartBtn.gameObject.SetActive(isAnimalReady && isFrutaReady);
     }
 
-    public void ResetLobby() 
+    public void ResetLobby()
     {
         isAnimalReady = false;
         isFrutaReady = false;
@@ -47,5 +54,6 @@ public class LobbyControllerScript : MonoBehaviour
         ReadyFruta.gameObject.SetActive(false);
         StartBtn.gameObject.SetActive(false);
     }
+    #endregion
 
 }

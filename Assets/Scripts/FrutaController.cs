@@ -1,10 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FrutaController : MonoBehaviour
 {
-     [SerializeField] private float speed, jumpspeed;
+    //Variables auxiliares
+    [SerializeField] private float speed, jumpspeed;
+
+    //Player Inputs
     private PlayerControl playerControl;
 
     private void Awake()
@@ -31,14 +34,17 @@ public class FrutaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Movimiento derecha izquierda
         float movementInputX = playerControl.Fruta.MoveX.ReadValue<float>();
+        //Movimiento delante detras
         float movementInputZ = playerControl.Fruta.MoveZ.ReadValue<float>();   
-        //float jumpInput = playerControl.Fruta.Jump.ReadValue<float>();
-
+        
+        //Posicion del jugador
         Vector3 currentPosition = transform.position;
+        //Se suma el movimiento
         currentPosition.x += movementInputX * speed * Time.deltaTime;
         currentPosition.z += movementInputZ * speed * Time.deltaTime;
-        //currentPosition.y += jumpInput * speed * Time.deltaTime;
+        //Se actualiza posicion
         transform.position = currentPosition;
     }
 }

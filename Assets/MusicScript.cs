@@ -11,6 +11,9 @@ public class MusicScript : MonoBehaviour
 
     private bool isMusicOn = true;
 
+    /* This methods controls the music button sprite and changes a boolean depending on the state of the music.
+     * This boolean will be used to turn on and off the volume once the sound integration is done
+     */
     public void MusicButton() 
     {
         isMusicOn = !isMusicOn;
