@@ -6,6 +6,8 @@ public class FrutaController : MonoBehaviour
 {
     //Variables auxiliares
     [SerializeField] private float speed, jumpspeed;
+    [SerializeField] private GameTimerController timer;
+    public PlayerScore score;
 
     //Player Inputs
     private PlayerControl playerControl;
@@ -52,7 +54,14 @@ public class FrutaController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        ren = GetComponent<Renderer>();
-        ren.material.SetColor("_Color", Color.green);
+        if (this.tag == "Fruit" && collision.gameObject.tag == "Animal")
+        {
+            ren = GetComponent<Renderer>();
+            ren.material.SetColor("_Color", Color.green);
+            score.isAnimal = true;
+            score.time = timer.GetElapsedSeconds();
+            this.tag = "Animal";
+            collision.gameObject.GetComponent<PlayerScore>().takedowns++;
+        } 
     }
 }

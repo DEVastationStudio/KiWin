@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     //Variables auxiliares
     [SerializeField] private float speed, jumpspeed;
+    public PlayerScore score;
 
     //Player Inputs
     private PlayerControl playerControl;

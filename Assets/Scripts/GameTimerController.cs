@@ -12,6 +12,7 @@ public class GameTimerController : MonoBehaviour
     public bool autoStart = false;
     public int initialSeconds = 90;
     private float _timer = 0;
+    private int _maxTime;
 
     ///<summary>When this object is created, the timer will start if <paramref name="autoStart"/> is set to true.</summary>
     void Start()
@@ -44,6 +45,7 @@ public class GameTimerController : MonoBehaviour
     ///<summary>Initializes the timer. An event will be called in <paramref name="seconds"/> seconds.</summary>
     public void BeginTimer(int seconds)
     {
+        _maxTime = seconds;
         _timer = seconds;
         FormatTimer();
     }
@@ -59,6 +61,12 @@ public class GameTimerController : MonoBehaviour
     {
         timerText.text = "00:00";
         this.enabled = false;
+    }
+
+    ///<summary>Returns the seconds left on the timer, rounded down to the nearest int.</summary>
+    public int GetElapsedSeconds()
+    {
+        return Mathf.FloorToInt(Mathf.Max(0,_maxTime-_timer));
     }
 
 }
