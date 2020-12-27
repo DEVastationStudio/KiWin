@@ -1472,6 +1472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerController: {fileID: 2116328095}
   fadeController: {fileID: 1280325890}
+  timerTime: 9
 --- !u!4 &1989686719
 Transform:
   m_ObjectHideFlags: 0
@@ -1650,7 +1651,7 @@ PrefabInstance:
     - target: {fileID: 6828539745112944883, guid: ad77939d5110dbb4ca8ec9d4d7cdce6b,
         type: 3}
       propertyPath: autoStart
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6828539745112944883, guid: ad77939d5110dbb4ca8ec9d4d7cdce6b,
         type: 3}
