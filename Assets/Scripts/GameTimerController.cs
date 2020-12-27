@@ -10,6 +10,7 @@ public class GameTimerController : MonoBehaviour
     public TimerEndDelegate OnTimerEnd;
     public Text timerText;
     public bool autoStart = false;
+    public int initialSeconds = 90;
     private float _timer = 0;
 
     ///<summary>When this object is created, the timer will start if <paramref name="autoStart"/> is set to true.</summary>
@@ -18,7 +19,7 @@ public class GameTimerController : MonoBehaviour
         OnTimerEnd += StopTimer;
         if (autoStart)
         {
-            BeginTimer(90);
+            BeginTimer(initialSeconds);
         }
         else
         {
