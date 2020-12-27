@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+///<summary>Class that manages an in-game timer, and calls an event when the timer ends.</summary>
 public class GameTimerController : MonoBehaviour
 {
     public delegate void TimerEndDelegate();
@@ -11,6 +12,7 @@ public class GameTimerController : MonoBehaviour
     public bool autoStart = false;
     private float _timer = 0;
 
+    ///<summary>When this object is created, the timer will start if <paramref name="autoStart"/> is set to true.</summary>
     void Start()
     {
         OnTimerEnd += StopTimer;
@@ -24,6 +26,7 @@ public class GameTimerController : MonoBehaviour
         }
     }
 
+    ///<summary>If the timer is still running, it will decrease until it finishes. When that happens, <paramref name="OnTimerEnd"/> will be called.</summary>
     void Update()
     {
         if (_timer > 0)
@@ -37,17 +40,20 @@ public class GameTimerController : MonoBehaviour
         }
     }
 
+    ///<summary>Initializes the timer. An event will be called in <paramref name="seconds"/> seconds.</summary>
     public void BeginTimer(int seconds)
     {
         _timer = seconds;
         FormatTimer();
     }
 
+    ///<summary>Formats the visual text to show how many minutes and seconds are left on the timer.</summary>
     private void FormatTimer()
     {
         timerText.text = string.Format("{0:00}", Mathf.Floor(_timer/60)) + ":" + string.Format("{0:00}", Mathf.Floor(_timer%60));
     }
 
+    ///<summary>Stops the timer, and changes the visual text to "00:00".</summary>
     private void StopTimer()
     {
         timerText.text = "00:00";
