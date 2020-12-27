@@ -10,6 +10,8 @@ public class FrutaController : MonoBehaviour
     //Player Inputs
     private PlayerControl playerControl;
 
+    private Renderer ren;
+
     private void Awake()
     {
         playerControl = new PlayerControl();
@@ -46,5 +48,11 @@ public class FrutaController : MonoBehaviour
         currentPosition.z += movementInputZ * speed * Time.deltaTime;
         //Se actualiza posicion
         transform.position = currentPosition;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        ren = GetComponent<Renderer>();
+        ren.material.SetColor("_Color", Color.green);
     }
 }
